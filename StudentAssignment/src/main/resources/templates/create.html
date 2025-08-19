@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 40px;
+        }
+
+        h2 {
+            color: #004080;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 16px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005a99;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007acc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Create Student</h2>
+
+    <form th:action="@{/save}" th:object="${student}" method="post">
+        Name: <input type="text" th:field="*{name}" required>
+        Father Name: <input type="text" th:field="*{fatherName}" required>
+        Gender:
+        <select th:field="*{gender}">
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHERS">Others</option>
+        </select>
+        DOB: <input type="date" th:field="*{dob}" required>
+        Address: <input type="text" th:field="*{address}" required>
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

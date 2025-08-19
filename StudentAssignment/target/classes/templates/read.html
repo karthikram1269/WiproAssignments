@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Student Details</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 40px;
+		}
+
+		h2 {
+			color: #004080;
+		}
+
+		p {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+
+		strong {
+			color: #333;
+		}
+
+		a {
+			display: block;
+			margin-top: 20px;
+			color: #007acc;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		#home {
+			position: fixed;
+			top: 50px;
+			right: 100px;
+			text-decoration: none;
+			color: white;
+			padding:10px 20px;
+			background-color: #007acc;
+			box-shadow: 2px 2px black;
+		}
+
+		div {
+			position: fixed;
+			top:100px;
+			left:70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<h2>Student Details</h2>
+
+			<p><strong>Roll No:</strong> <span th:text="${student.rollno}"></span></p>
+			<p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
+			<p><strong>Father Name:</strong> <span th:text="${student.fatherName}"></span></p>
+			<p><strong>Gender:</strong> <span th:text="${student.gender}"></span></p>
+			<p><strong>DOB:</strong> <span th:text="${student.dob}"></span></p>
+			<p><strong>Address:</strong> <span th:text="${student.address}"></span></p>
+
+	</div>
+	<a id="home" href="/">HOME</a>
+</body>
+
+</html>

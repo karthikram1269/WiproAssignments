@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>All Students</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 40px;
+		}
+
+		h2 {
+			color: #004080;
+		}
+
+		table {
+			position: fixed;
+			top:100px;
+			width: 100%;
+			border-collapse: collapse;
+			background-color: white;
+		}
+
+		table th,
+		table td {
+			padding: 10px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+
+		table th {
+			background-color: #e6f2ff;
+		}
+
+		a {
+			color: #007acc;
+			text-decoration: none;
+			margin-right: 10px;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		#home {
+			position: fixed;
+			top: 50px;
+			right: 100px;
+			text-decoration: none;
+			color: white;
+			padding: 10px 20px;
+			background-color: #007acc;
+			box-shadow: 2px 2px black;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>All Students</h2>
+
+	<table>
+		<tr>
+			<th>Roll No</th>
+			<th>Name</th>
+			<th>Father Name</th>
+			<th>Actions</th>
+		</tr>
+		<tr th:each="s : ${list}">
+			<td th:text="${s.rollno}"></td>
+			<td th:text="${s.name}"></td>
+			<td th:text="${s.fatherName}"></td>
+			<td>
+				<a th:href="@{'/edit/' + ${s.rollno}}">Edit</a>
+				<a th:href="@{'/delete/' + ${s.rollno}}">Delete</a>
+			</td>
+		</tr>
+	</table>
+
+	<a id = "home" href="/">Back to Home</a>
+</body>
+
+</html>
