@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-form-field appearance="outline" class="dropdown">
+        <mat-label>Genre</mat-label>
+        <mat-select [(ngModel)]="selectedGenre">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="action">Action</mat-option>
+            <mat-option value="romance">Romance</mat-option>
+            <mat-option value="epic">Epic</mat-option>
+            <mat-option value="fantasy">Fantasy</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="average-rating">
+        ⭐ Average Rating: <b>{{ averageRating }}</b>
+    </div>
+
+    <div class="movie-grid">
+        <mat-card *ngFor="let movie of filteredMovies" [ngClass]="{'top-rated': movie.rating === topRating}">
+            <img mat-card-image [src]="movie.poster" alt="{{ movie.title }}">
+            <mat-card-content>
+                <h3>{{ movie.title }}</h3>
+                <p>Genre: {{ movie.genre }}</p>
+                <p>Rating: ⭐ {{ movie.rating }}</p>
+                <h5>{{ movie.description }}</h5>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
