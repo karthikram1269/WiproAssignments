@@ -1,0 +1,47 @@
+<div class="container">
+
+  <!-- Filter Controls -->
+  <div class="filters">
+    <mat-form-field appearance="outline" class="filter">
+      <mat-label>Filter By</mat-label>
+      <mat-select [(ngModel)]="filterType">
+        <mat-option value="artist">Artist</mat-option>
+        <mat-option value="album">Album</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter">
+      <mat-label>{{ filterType | titlecase }}</mat-label>
+      <mat-select [(ngModel)]="selectedFilter">
+        <mat-option value="all">All</mat-option>
+        <mat-option *ngFor="let option of uniqueFilters" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Songs Grid -->
+  <div class="songs-grid">
+    <mat-card *ngFor="let song of filteredSongs" class="song-card" 
+              [ngClass]="{ 'top-rated': song.rating === 5 }">
+      <mat-card-header>
+        <mat-card-title>{{ song.name }}</mat-card-title>
+        <mat-card-subtitle>{{ song.artist }} • {{ song.album }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>⏱ {{ song.duration }}</p>
+        <p>
+          ⭐ <span *ngFor="let s of [].constructor(song.rating)">★</span>
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-icon-button color="primary">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
