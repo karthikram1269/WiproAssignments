@@ -1,0 +1,64 @@
+<h1>Feedback Form</h1>
+
+<form [formGroup]="myFormReact" (ngSubmit)="onSubmitReact()" class="contact-form">
+
+  <!-- Name -->
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput placeholder="Enter Your Name" formControlName="name" />
+
+    @if(myFormReact.get('name')?.invalid && myFormReact.get('name')?.touched) {
+      <small style="color:red">
+        @if(myFormReact.get('name')?.errors?.['required']) { Name is required! }
+        @if(myFormReact.get('name')?.errors?.['minlength']) { Name must be at least 5 chars }
+        @if(myFormReact.get('name')?.errors?.['maxlength']) { Name must be within 5 - 10 chars }
+      </small>
+    }
+  </mat-form-field>
+
+  <!-- Email -->
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Enter Your Email" formControlName="email" />
+
+    @if(myFormReact.get('email')?.invalid && myFormReact.get('email')?.touched) {
+      <small style="color: red">
+        @if(myFormReact.get('email')?.errors?.['required']) { Email is required }
+        @if(myFormReact.get('email')?.errors?.['email']) { Invalid email format }
+      </small>
+    }
+  </mat-form-field>
+
+  <!-- Subject -->
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Subject</mat-label>
+    <input type="text" matInput placeholder="Enter The Subject" formControlName="subject" maxlength="40" />
+
+    @if(myFormReact.get('subject')?.invalid && myFormReact.get('subject')?.touched) {
+      <small style="color:red">
+        @if(myFormReact.get('subject')?.errors?.['required']) { Subject is required }
+        @if(myFormReact.get('subject')?.errors?.['min']) { Must be at least 5 characters }
+        @if(myFormReact.get('subject')?.errors?.['max']) { Max 40 characters allowed }
+      </small>
+    }
+  </mat-form-field>
+
+  <!-- Comments -->
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Comments / Issue</mat-label>
+    <textarea matInput rows="4" placeholder="Type your message here..." 
+              formControlName="comments" maxlength="350"></textarea>
+
+    @if(myFormReact.get('comments')?.invalid && myFormReact.get('comments')?.touched) {
+      <small style="color:red">
+        @if(myFormReact.get('comments')?.errors?.['required']) { Comments are required }
+        @if(myFormReact.get('comments')?.errors?.['min']) { Minimum 10 characters required }
+        @if(myFormReact.get('comments')?.errors?.['max']) { Maximum 350 characters allowed }
+      </small>
+    }
+  </mat-form-field>
+
+  <!-- Submit -->
+  <button mat-raised-button color="primary" class="submit-btn">Submit</button>
+
+</form>
